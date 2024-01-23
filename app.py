@@ -10,7 +10,7 @@ os.environ["LANGCHAIN_PROJECT"] = st.secrets['LANGCHAIN_PROJECT']
 
 import pandas as pd
 
-from astrapy.db import AstraDB
+#from astrapy.db import AstraDB
 
 from langchain.chat_models import ChatOpenAI
 from langchain.vectorstores import AstraDB
@@ -191,7 +191,7 @@ def load_vectorstore(username):
     return AstraDB(
         embedding=embedding,
         collection_name=f"vector_context_{username}",
-        namespace=f"vector_demo_{username}",
+        #namespace=f"vector_demo_{username}",
         token=st.secrets["ASTRA_VECTOR_TOKEN"],
         api_endpoint=os.environ["ASTRA_VECTOR_ENDPOINT"],
     )
@@ -223,7 +223,7 @@ def load_chat_history(username):
     print("load_chat_history")
     return AstraDBChatMessageHistory(
         session_id=username,
-        namespace=f"vector_demo_{username}",
+        #namespace=f"vector_demo_{username}",
         api_endpoint=os.environ["ASTRA_VECTOR_ENDPOINT"],
         token=st.secrets["ASTRA_VECTOR_TOKEN"],
     )
